@@ -11,8 +11,8 @@ class MachineInfo extends Model
 	protected $connection = 'mysql';
 	protected $primaryKey = 'id';
 	//protected $guarded = array();
-	protected $fillable =['mac','ip','section_id','machine_type_id','counter_no'];
-	protected $nullable = ['counter_no','section_id','machine_type_id'];	
+	protected $fillable =['mac','ip','section_id','subsection_id','machine_type_id','counter_no'];
+	protected $nullable = ['section_id','subsection_id','machine_type_id'];	
 
 	/*
 		Fetchs the Section Information
@@ -22,6 +22,16 @@ class MachineInfo extends Model
 	public function section()
 	{
 		return $this->belongsTo("App\ORM\Metadata\Section","section_id");
+	}
+
+	/*
+		Fetchs the subSection Information
+		By: Khursheed Ali
+		On: 9/6/2017 15:31 
+	*/
+	public function subsection()
+	{
+		return $this->belongsTo("App\ORM\Metadata\Subsection","section_id");
 	}
 
 	/*
@@ -45,7 +55,7 @@ class MachineInfo extends Model
 	    {
 	      if(empty($this->{$field}))
 	      {
-	        $model->{$field} = null;
+	      	$this->{$field} = null;
 	      }
 	    }
 	}

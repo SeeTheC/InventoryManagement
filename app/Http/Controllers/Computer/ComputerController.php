@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ORM\Metadata\TypeOfMachine;
 use App\ORM\Metadata\Section;
+use App\ORM\Metadata\Subsection;
 use App\ORM\Core\MachineInfo;
 use App\ORM\Core\UserInfo;
 use App\ORM\Core\CpuInfo;
@@ -50,13 +51,14 @@ class ComputerController extends Controller
      
       $machineType=TypeOfMachine::all();
       $section=Section::all();
-   		return view("im.computer.Machine",compact('machineType','section',"mid","info"));
+      $subsection=Subsection::all();      
+   	  return view("im.computer.Machine",compact('machineType','section','subsection',"mid","info"));
    	}
     //post
     public function machinePost(Request $request)
     {
       $form=$request->all();  
-      $result=MachineInfo::saveForm($form,1);
+      $result=MachineInfo::saveForm($form,1);      
       return $result;
     }
 

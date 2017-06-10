@@ -1,7 +1,7 @@
 @extends("im.layout.Common")
 @section("content")
 
-<div class="row">		    			
+<div class="row top-subheader-padding top-subheader">		    			
 		<div class="col-sm-12 page-header text-primary">
  				<h1>Computer </h1>
  				<ol class="breadcrumb breadcrum-bg-black">
@@ -19,7 +19,7 @@
                  <div class="carousel-inner">
                      <div class="item active text-center">
                          <div style="position:relative;left:40%">
-                               <img src="{{ URL::asset('assets/img/desktop.png') }}" class="img-responsive" style="width:100px;height:100px" align="middle"/>
+                               <img src="{{ URL::asset('assets/img/desktop.png') }}" class="img-responsive" style="width:60px;height:60px" align="middle"/>
                          </div>
                          <div class="icontext">
                              Add New Computer
@@ -36,7 +36,7 @@
                         <div class="carousel-inner">
                             <div class="item active text-center">
                                 <div style="position:relative;left:37%">
-                                      <img src="{{ URL::asset('assets/img/eye-512.png') }}" class="img-responsive" style="width:150px;height:100px" align="middle"/>
+                                      <img src="{{ URL::asset('assets/img/eye-512.png') }}" class="img-responsive" style="width:110px;height:60px" align="middle"/>
                                 </div>
                                 <div class="icontext">
                                     View

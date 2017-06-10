@@ -50,19 +50,25 @@ function gotoNextMenu(){
 
 function postRequest($this,isMainForm){
 	var url=$("form")[0].action;
-	var fdata=$("form").serialize();	
-	$.post(url,fdata,function(data,status){
-		console.log(data);		
-		if(data["success"]){
-			if(isMainForm==true){
-				setMid(data["rtnId"]);
+	var fdata=$("form").serialize();
+	if($($("form")[0]).isValid()){
+		$.post(url,fdata,function(data,status){
+			alert(data);
+			if(data["success"]){
+				if(isMainForm==true){
+					setMid(data["rtnId"]);
+				}
+				gotoNextMenu();
+			}	
+			else{
+				setGlobalError(data["errorMsg"]);
 			}
-			gotoNextMenu();
-		}	
-		else{
-			setGlobalError(data["errorMsg"]);
-		}
-	});
+		}).error(function(e){
+			console.log(e);
+		});
+
+	}	
+	
 }
 function setMid(id)
 {

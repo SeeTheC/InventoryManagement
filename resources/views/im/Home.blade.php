@@ -10,7 +10,7 @@
                  <div class="carousel-inner">
                      <div class="item active text-center">
                          <div style="position:relative;left:40%">
-                               <img src="{{ URL::asset('assets/img/desktop.png') }}" class="img-responsive" style="width:100px;height:100px" align="middle"/>
+                               <img src="{{ URL::asset('assets/img/desktop.png') }}" class="img-responsive" style="width:60px;height:60px" align="middle"/>
                          </div>
                          <div class="icontext">
                              Computer (Desktop)
@@ -18,7 +18,7 @@
                      </div>
                         <div class="item text-center">
                          <div style="position:relative;left:40%">
-                               <img src="{{ URL::asset('assets/img/laptop.png') }}" class="img-responsive" style="width:100px;height:100px" align="middle"/>
+                               <img src="{{ URL::asset('assets/img/laptop.png') }}" class="img-responsive" style="width:60px;height:60px" align="middle"/>
                          </div>
                          <div class="icontext">
                              Computer (Laptop)
@@ -35,7 +35,7 @@
 	                    <div class="carousel-inner">
 	                        <div class="item active text-center">
 	                            <div style="position:relative;left:37%">
-	                                  <img src="{{ URL::asset('assets/img/switch.png') }}" class="img-responsive" style="width:150px;height:100px" align="middle"/>
+	                                  <img src="{{ URL::asset('assets/img/switch.png') }}" class="img-responsive" style="width:110px;height:60px" align="middle"/>
 	                            </div>
 	                            <div class="icontext">
 	                                Device (Switch)
@@ -43,7 +43,7 @@
 	                        </div>
 	                           <div class="item text-center">
 	                            <div style="position:relative;left:37%">
-	                                  <img src="{{ URL::asset('assets/img/router.png') }}" class="img-responsive" style="width:150px;height:100px" align="middle"/>
+	                                  <img src="{{ URL::asset('assets/img/router.png') }}" class="img-responsive" style="width:110px;height:60px" align="middle"/>
 	                            </div>
 										 <div class="icontext">
 	                                Device (Router)
@@ -63,7 +63,7 @@
                     <div class="carousel-inner">
                         <div class="item active text-center">
                             <div style="position:relative;left:40%">
-                                  <img src="{{ URL::asset('assets/img/printer1.png') }}" class="img-responsive" style="width:100px;height:100px" align="middle"/>
+                                  <img src="{{ URL::asset('assets/img/printer1.png') }}" class="img-responsive" style="width:60px;height:60px" align="middle"/>
                             </div>
                             <div class="icontext">
                                 Printer
@@ -71,7 +71,7 @@
                         </div>
                            <div class="item text-center">
                             <div style="position:relative;left:40%">
-                                  <img src="{{ URL::asset('assets/img/printer2.png') }}" class="img-responsive" style="width:100px;height:100px" align="middle"/>
+                                  <img src="{{ URL::asset('assets/img/printer2.png') }}" class="img-responsive" style="width:60px;height:60px" align="middle"/>
                             </div>
                             <div class="icontext">
                                 Printer
@@ -88,7 +88,7 @@
                     <div class="carousel-inner">
                         <div class="item active text-center">
                             <div style="position:relative;left:37%">
-                                  <img src="{{ URL::asset('assets/img/scanner1.png') }}" class="img-responsive" style="width:150px;height:100px" align="middle"/>
+                                  <img src="{{ URL::asset('assets/img/scanner1.png') }}" class="img-responsive" style="width:110px;height:60px" align="middle"/>
                             </div>
                             <div class="icontext">
                                 Scanner
@@ -96,7 +96,7 @@
                         </div>
                            <div class="item text-center">
                             <div style="position:relative;left:37%">
-                                  <img src="{{ URL::asset('assets/img/scanner2.png') }}" class="img-responsive" style="width:150px;height:100px" align="middle"/>
+                                  <img src="{{ URL::asset('assets/img/scanner2.png') }}" class="img-responsive" style="width:110px;height:60px" align="middle"/>
                             </div>
 									 <div class="icontext">
                                 Scanner
@@ -114,16 +114,16 @@
 	                    <!-- Wrapper for slides -->
 	                    <div class="carousel-inner">
 	                        <div class="item active text-center">
-	                            <div style="position:relative;left:40%">
-	                                  <img src="{{ URL::asset('assets/img/hardware1.png') }}" class="img-responsive" style="width:100px;height:100px" align="middle"/>
+	                            <div style="position:relative;left:45%">
+	                                  <img src="{{ URL::asset('assets/img/hardware1.png') }}" class="img-responsive" style="width:60px;height:60px" align="middle"/>
 	                            </div>
 	                            <div class="icontext">
 	                                Computer Hardware (Addon)
 	                            </div>		                            
 	                        </div>
 	                           <div class="item text-center">
-	                            <div style="position:relative;left:40%">
-	                                  <img src="{{ URL::asset('assets/img/hardware2.png') }}" class="img-responsive" style="width:100px;height:100px" align="middle"/>
+	                            <div style="position:relative;left:45%">
+	                                  <img src="{{ URL::asset('assets/img/hardware2.png') }}" class="img-responsive" style="width:60px;height:60px" align="middle"/>
 	                            </div>
 	                            <div class="icontext">
 	                                Computer Hardware (Replace)

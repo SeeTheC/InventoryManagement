@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="{{ URL::asset('assets/css/layout-custom.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/font-awesome/css/font-awesome.min.css') }}" />
 
-  <script src="{{ URL::asset('assets/js/jquery-3.1.1.min.js') }}"></script>
+  <script src="{{ URL::asset('assets/js/jquery-2.2.3.min.js') }}"></script>
   <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
   <link rel="stylesheet" href="{{ URL::asset('assets/css/lm.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/css/tile.css') }}"> 
   <script src="{{ URL::asset('assets/js/common/common.js') }}"></script>   
@@ -45,17 +46,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" > My-Org</a>
+      <a class="navbar-brand" href="#" >IIT-Bombay</a>
     </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
 	        <li class="active"><a href="{{ URL::to('home') }}">Home</a></li>
 	        <li><a href="{{ URL::to('about') }}">About</a></li>
-	        <li><a href="underconstruct.php">Contact</a></li>
+	        <li><a href="{{ URL::to('underconstruct') }}">Contact</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="login/login.php"><span class="glyphicon glyphicon-log-out"></span>Login</a></li>
-	      </ul>
+	        
+          @if(!isset($_SESSION['loginStatus']) || (isset($_SESSION['loginStatus']) && $_SESSION['loginStatus']==false))          
+            <li><a href="{{ URL::to('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	        @endif
+          @if(isset($_SESSION['loginStatus']) && $_SESSION['loginStatus']==true)          
+            <li> <a> <span class="glyphicon glyphicon-user"> {{$_SESSION['username'] }} </span> </a></li>
+            <li><a href="{{ URL::to('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          @endif
+          
+        </ul>
 	    </div>
 	</div>
   </div>
@@ -65,14 +74,16 @@
     <div class="col-sm-2">
     </div>
     <div class="col-sm-8 text-left center-content">
-    		<div class="row jumbotron content-row1">
+    		<div class="row jumbotron content-row1 top-header-padding">
 				<div class="col-sm-2">
-					<img src="{{ URL::asset('assets/img/logo.png') }}" style="width:180;height:150px;"/>				   
-	   		</div>
-	   		<div class="col-sm-10">
-				<h1>Computer Center</h1>
-				<p>Inventory Management</p>  
-			</div>				  							
+        </div>
+        <div class="col-sm-2">
+					<img src="{{ URL::asset('assets/img/logo.png') }}" style="width:180;height:100px;"/>				   
+	   		</div>	   		
+        <div class="col-sm-8">
+						<h1>Computer Center</h1>
+						<p>Inventory Management</p>  
+				</div>				  							
     		</div>
     		<br/>
     		<div class="row row-padding content-row2">
