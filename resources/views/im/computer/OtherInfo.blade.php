@@ -22,7 +22,7 @@
 							</div>
 						  	<div class="panel-footer">
 									<button type="reset" class="btn btn-danger">Reset</button>					        									
-								  	<button type="button" onclick="javascript:postRequest(this)"  class="btn btn-success">Submit</button>					        									
+								  	<button id="btnSave" type="button" onclick="javascript:postRequest(this)"  class="btn btn-success">Submit</button>					        									
 						  	</div>																	
 			      </div>
 		    </div>

@@ -10,13 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/abc', function () {
 
-   	$people=["abc","pqr","xyz"];   	
-    return view("test.abc",compact('people'));
+Route::get('/test', function () {
+   
+    return view("welcome");
 });
 
 Route::get('/abcontroller',"TestController@abc");
@@ -36,7 +33,8 @@ Route::get('/error', function () {
 	On: 10/06/2017 21:39PM
 */
 Route::group(['middleware' => ['sessionAuth']], function()
-{
+{	
+
 	Route::get('/home', function () {
 	    return view("im.Home");
 	});
@@ -48,16 +46,26 @@ Route::group(['middleware' => ['sessionAuth']], function()
 
     Route::get('/underconstruct', function () {			
     	return view("im.Underconstruct");
-	});    
+	}); 
 
+    Route::get('/underconstruct.php', function () {			
+    	return view("im.Underconstruct");
+	}); 
 });
 
 /*
 ------------------------------[Login]-------------------------------------
 */
+Route::get('/', 'Auth\LoginController@login');
 Route::get('/login','Auth\LoginController@login');
 Route::post('/login/authenticate','Auth\LoginController@loginPost');
 Route::get('/logout','Auth\LoginController@logout');
+
+Route::get('/manageuser','Core\ManageUserController@manageSystemUser');
+
+Route::get('/manageuser/addedit/{uid?}','Core\ManageUserController@addEditSystemUser');
+Route::post('/manageuser/addedit','Core\ManageUserController@addEditSystemUserPost');
+Route::get('/manageuser/view','Core\ManageUserController@viewSystemUser');
 
 /*
 ------------------------------[Computer]-------------------------------------
@@ -79,9 +87,23 @@ Route::group(['middleware' => ['sessionAuth']], function()
 	Route::get('/computer/cpu/{mid}', 'Computer\ComputerController@cpu' );
 	Route::post('/computer/cpu', 'Computer\ComputerController@cpuPost' );
 
+	Route::get('/computer/motherboard/{mid}', 'Computer\ComputerController@motherboard' );	
+	Route::post('/computer/motherboard', 'Computer\ComputerController@motherboardPost' );
+
+	Route::get('/computer/processor/{mid}', 'Computer\ComputerController@processor' );
+	Route::post('/computer/processor', 'Computer\ComputerController@processorPost' );
+	
+	Route::get('/computer/hdd/{mid}', 'Computer\ComputerController@hdd' );
+	Route::post('/computer/hdd', 'Computer\ComputerController@hddPost' );
+	
+	Route::get('/computer/ram/{mid}', 'Computer\ComputerController@ram' );
+	Route::post('/computer/ram', 'Computer\ComputerController@ramPost' );
+	
+	Route::get('/computer/smps/{mid}', 'Computer\ComputerController@smps' );
+	Route::post('/computer/smps', 'Computer\ComputerController@smpsPost' );
+
 	Route::get('/computer/monitor/{mid}', 'Computer\ComputerController@monitor' );
 	Route::post('/computer/monitor', 'Computer\ComputerController@monitorPost' );
-
 
 	Route::get('/computer/keyboard/{mid}', 'Computer\ComputerController@keyboard' );
 	Route::post('/computer/keyboard', 'Computer\ComputerController@keyboardPost' );
@@ -91,6 +113,14 @@ Route::group(['middleware' => ['sessionAuth']], function()
 
 	Route::get('/computer/otherinfo/{mid}', 'Computer\ComputerController@other' );
 	Route::post('/computer/otherinfo', 'Computer\ComputerController@otherPost' );
+
+	Route::get('/computer/component/{mid?}','Computer\ComputerComponentController@manageComponent');
+	
+	Route::get('/manageuser','Core\ManageUserController@manageSystemUser');
+
+	Route::get('/manageuser/addedit/{uid?}','Core\ManageUserController@addEditSystemUser');
+	Route::post('/manageuser/addedit','Core\ManageUserController@addEditSystemUserPost');
+	Route::get('/manageuser/view','Core\ManageUserController@viewSystemUser');
 
 });
 //---------------------------------------------------------------------------------------

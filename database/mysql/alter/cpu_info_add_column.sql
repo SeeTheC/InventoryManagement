@@ -25,6 +25,14 @@ ADD COLUMN `hdd_ops_ref_no` VARCHAR(100) NULL AFTER `hdd_warrenty`,
 ADD COLUMN `hdd_gnatid` VARCHAR(100) NULL AFTER `hdd_ops_ref_no`;
 
 ALTER TABLE `cc_inventory`.`tbl_cpuinfo` 
+ADD COLUMN `smps_vendor` VARCHAR(100) NULL AFTER `ram_gnatid`,
+ADD COLUMN `smps_purchase_date` TIMESTAMP NULL AFTER `smps_vendor`,
+ADD COLUMN `smps_warrenty` VARCHAR(100) NULL AFTER `smps_purchase_date`,
+ADD COLUMN `smps_ops_ref_no` VARCHAR(100) NULL AFTER `smps_warrenty`,
+ADD COLUMN `smps_gnatid` VARCHAR(100) NULL AFTER `smps_ops_ref_no`;
+
+
+ALTER TABLE `cc_inventory`.`tbl_cpuinfo` 
 ADD COLUMN `counter_no` int(11) NULL AFTER `mid`;
 
 

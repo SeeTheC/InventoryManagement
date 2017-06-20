@@ -11,7 +11,7 @@ class MachineInfo extends Model
 	protected $connection = 'mysql';
 	protected $primaryKey = 'id';
 	//protected $guarded = array();
-	protected $fillable =['mac','ip','section_id','subsection_id','machine_type_id','counter_no'];
+	protected $fillable =['mac','ip','section_id','subsection_id','cpu_id','machine_type_id','counter_no'];
 	protected $nullable = ['section_id','subsection_id','machine_type_id'];	
 
 	/*
@@ -44,6 +44,20 @@ class MachineInfo extends Model
 		return $this->belongsTo("App\ORM\Metadata\TypeOfMachine","machine_type_id");
 	}
 
+	public function userinfo()
+    {
+        return $this->hasOne('App\ORM\Core\UserInfo',"mid");//pram: table,forigen_key,primary_key
+    }
+
+    public function cpuinfo()
+    {
+        return $this->hasOne('App\ORM\Core\CpuInfo',"mid");//pram: table,forigen_key,primary_key
+    }
+
+    public function systemuser()
+    {
+        return $this->belongsTo("App\ORM\Core\SystemUser","by_user_id");//pram: table,forigen_key,primary_key
+    }
 	/*
 		Sets the field value to null other wise it eloquent will give error.
 		By: Khursheed Ali

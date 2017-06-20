@@ -52,8 +52,7 @@ function postRequest($this,isMainForm){
 	var url=$("form")[0].action;
 	var fdata=$("form").serialize();
 	if($($("form")[0]).isValid()){
-		$.post(url,fdata,function(data,status){
-			alert(data);
+		$.post(url,fdata,function(data,status){			
 			if(data["success"]){
 				if(isMainForm==true){
 					setMid(data["rtnId"]);
@@ -71,8 +70,7 @@ function postRequest($this,isMainForm){
 	
 }
 function setMid(id)
-{
-	alert(id);
+{	
 	$(".sub-form").data("mid",id);
 }
 function setGlobalError(msg)

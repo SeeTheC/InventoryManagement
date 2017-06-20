@@ -9,7 +9,7 @@ class MouseInfo extends Model
    	protected $table = 'tbl_mouse_info';
 	// optional : connection -> Database name
 	protected $connection = 'mysql';
-	protected $fillable =['brand','serial_no','vendor','warrenty','purchase_date','ops_ref_no'];
+	protected $fillable =['brand','serial_no','vendor','warrenty','purchase_date','cpu_id','ops_ref_no'];
 	protected $nullable =['brand','serial_no','vendor','warrenty','purchase_date','ops_ref_no'];	
 	
 	/*

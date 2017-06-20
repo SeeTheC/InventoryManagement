@@ -51,7 +51,7 @@
 							</div>
 						  	<div class="panel-footer">
 									<button type="reset" class="btn btn-danger">Reset</button>					        									
-								  	<button type="button" onclick="javascript:postRequest(this)"  class="btn btn-success">Save and Continue</button>					        									
+								  	<button id="btnSave" type="button" onclick="javascript:postRequest(this)"  class="btn btn-success">Save and Continue</button>					        									
 						  	</div>																	
 			      </div>
 			    </div>

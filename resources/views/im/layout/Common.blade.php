@@ -10,7 +10,7 @@
 
   <script src="{{ URL::asset('assets/js/jquery-2.2.3.min.js') }}"></script>
   <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+  <script src="{{ URL::asset('assets/js/jquery.form-validator.min.js') }}"></script>
   <link rel="stylesheet" href="{{ URL::asset('assets/css/lm.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/css/tile.css') }}"> 
   <script src="{{ URL::asset('assets/js/common/common.js') }}"></script>   
@@ -51,6 +51,9 @@
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
 	        <li class="active"><a href="{{ URL::to('home') }}">Home</a></li>
+          @if(isset($_SESSION['level']) && $_SESSION['level']==1)//superuser          
+            <li class=""><a href="{{ URL::to('manageuser') }}">Manage User</a></li>          
+          @endif
 	        <li><a href="{{ URL::to('about') }}">About</a></li>
 	        <li><a href="{{ URL::to('underconstruct') }}">Contact</a></li>
 	      </ul>

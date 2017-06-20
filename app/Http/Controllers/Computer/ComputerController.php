@@ -50,8 +50,8 @@ class ComputerController extends Controller
           return "Error: Invalid Machine Id ".$mid;                  
      
       $machineType=TypeOfMachine::all();
-      $section=Section::all();
-      $subsection=Subsection::all();      
+      $section=Section::orderBy('name', 'ASC')->get();
+      $subsection=Subsection::orderBy('name', 'ASC')->get();      
    	  return view("im.computer.Machine",compact('machineType','section','subsection',"mid","info"));
    	}
     //post
@@ -92,6 +92,152 @@ class ComputerController extends Controller
     
     //post
     public function cpuPost(Request $request)
+    {
+      $form=$request->all();  
+      $result=CpuInfo::saveForm($form,1);
+      return $result;
+    }
+
+    /*
+        Motherboard get detail
+        By: Khursheed Ali
+        On: 12/06/2017 22:05
+    */
+    //get    
+    public function motherboard($mid)
+    {
+      if($mid<=0)
+          return "Error: Invalid Machine Id ".$mid;                              
+      $info=$mid>0 ? (CpuInfo::where("mid",$mid)->get() ) : array();
+      $info=count($info)>0?$info[0]:array();
+      return view("im.computer.Motherboard",compact('mid',"info"));
+    }
+
+
+    /*
+        Motherboard Saves detail
+        By: Khursheed Ali
+        On: 12/06/2017 22:05
+    */    
+    //post
+    public function motherboardPost(Request $request)
+    {
+      $form=$request->all();  
+      $result=CpuInfo::saveForm($form,1);
+      return $result;
+    }
+
+
+    /*
+        Processor get detail
+        By: Khursheed Ali
+        On: 12/06/2017 22:05
+    */
+    //get    
+    public function processor($mid)
+    {
+      if($mid<=0)
+          return "Error: Invalid Machine Id ".$mid;                              
+      $info=$mid>0 ? (CpuInfo::where("mid",$mid)->get() ) : array();
+      $info=count($info)>0?$info[0]:array();
+      return view("im.computer.Processor",compact('mid',"info"));
+    }
+
+
+    /*
+        Processor Saves detail
+        By: Khursheed Ali
+        On: 12/06/2017 22:05
+    */    
+    //post
+    public function processorPost(Request $request)
+    {
+      $form=$request->all();  
+      $result=CpuInfo::saveForm($form,1);
+      return $result;
+    }
+
+    /*
+        RAM get detail
+        By: Khursheed Ali
+        On: 12/06/2017 22:05
+    */
+    //get    
+    public function ram($mid)
+    {
+      if($mid<=0)
+          return "Error: Invalid Machine Id ".$mid;                              
+      $info=$mid>0 ? (CpuInfo::where("mid",$mid)->get() ) : array();
+      $info=count($info)>0?$info[0]:array();
+      return view("im.computer.Ram",compact('mid',"info"));
+    }
+
+
+    /*
+        Processor Saves detail
+        By: Khursheed Ali
+        On: 12/06/2017 22:05
+    */    
+    //post
+    public function ramPost(Request $request)
+    {
+      $form=$request->all();  
+      $result=CpuInfo::saveForm($form,1);
+      return $result;
+    }
+
+     /*
+        HDD get detail
+        By: Khursheed Ali
+        On: 12/06/2017 22:05
+    */
+    //get    
+    public function hdd($mid)
+    {
+      if($mid<=0)
+          return "Error: Invalid Machine Id ".$mid;                              
+      $info=$mid>0 ? (CpuInfo::where("mid",$mid)->get() ) : array();
+      $info=count($info)>0?$info[0]:array();
+      return view("im.computer.Hdd",compact('mid',"info"));
+    }
+
+
+    /*
+        Processor Saves detail
+        By: Khursheed Ali
+        On: 12/06/2017 22:05
+    */    
+    //post
+    public function hddPost(Request $request)
+    {
+      $form=$request->all();  
+      $result=CpuInfo::saveForm($form,1);
+      return $result;
+    }
+
+     /*
+        SMPS get detail
+        By: Khursheed Ali
+        On: 12/06/2017 22:10
+    */
+    //get    
+    public function smps($mid)
+    {
+      if($mid<=0)
+          return "Error: Invalid Machine Id ".$mid;                              
+      $info=$mid>0 ? (CpuInfo::where("mid",$mid)->get() ) : array();
+      $info=count($info)>0?$info[0]:array();
+      return view("im.computer.Smps",compact('mid',"info"));
+    }
+
+
+    /*
+        Processor Saves detail
+        By: Khursheed Ali
+        On: 12/06/2017 22:10
+    */    
+    //post
+    public function smpsPost(Request $request)
     {
       $form=$request->all();  
       $result=CpuInfo::saveForm($form,1);

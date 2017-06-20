@@ -9,9 +9,9 @@ class CpuInfo extends Model
     protected $table = 'tbl_cpuinfo';
 	// optional : connection -> Database name
 	protected $connection = 'mysql';
-	protected $fillable =['processor','processor_speed','motherboard','ram_size','hdd_size','current_os','os_version','processor_gnat_id','processor_vendor','processor_warrenty','processor_purchase_date','processor_ops_ref_no','motherboard_gnat_id','motherboard_vendor','motherboard_warrenty','motherboard_purchase_date','motherboard_ops_ref_no','ram_gnat_id','ram_vendor','ram_warrenty','ram_purchase_date','ram_ops_ref_no','hdd_gnat_id','hdd_vendor','hdd_warrenty','hdd_purchase_date','hdd_ops_ref_no'];
+	protected $fillable =['processor','processor_speed','motherboard','ram_size','hdd_size','current_os','os_version','processor_gnat_id','processor_vendor','processor_warrenty','processor_purchase_date','processor_ops_ref_no','motherboard_gnat_id','motherboard_vendor','motherboard_warrenty','motherboard_purchase_date','motherboard_ops_ref_no','ram_gnat_id','ram_vendor','ram_warrenty','ram_purchase_date','ram_ops_ref_no','hdd_gnat_id','hdd_vendor','hdd_warrenty','hdd_purchase_date','hdd_ops_ref_no','smps_gnat_id','smps_vendor','smps_warrenty','smps_purchase_date','smps_ops_ref_no'];
 
-	protected $nullable = ['ram_size','hdd_size','processor_purchase_date','motherboard_purchase_date','ram_purchase_date','hdd_purchase_date'];	
+	protected $nullable = ['ram_size','hdd_size','processor_purchase_date','motherboard_purchase_date','ram_purchase_date','hdd_purchase_date','smps_purchase_date'];	
 
 	/*
 		Sets the field value to null other wise it eloquent will give error.

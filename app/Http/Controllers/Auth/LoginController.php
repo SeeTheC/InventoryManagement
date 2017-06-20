@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\ORM\Core\SystemUser;
 
 class LoginController extends Controller
 {
@@ -80,20 +81,27 @@ class LoginController extends Controller
         }              
         if ($ldapconn) {
             
-            if(!($bind=ldap_bind($ldapconn)))
-            {
-                $_SESSION['errmsg']="Anonymous Binding failed: LDAP SERVER NOT RESPONDING...!!<br>";
+            try
+            {       
+                    if(!($bind=ldap_bind($ldapconn)))
+                    {
+                        $_SESSION['errmsg']="Anonymous Binding failed: LDAP SERVER NOT RESPONDING...!!";
+                        return redirect($this->redirectError);
+                    }
+
+            }catch(\Exception $e){
+                $_SESSION['errmsg']="Anonymous Binding failed: LDAP SERVER NOT RESPONDING...!!";
+                $_SESSION['exception']=$e->getMessage();
                 return redirect($this->redirectError);
             }
-
             if (($res_id = ldap_search( $ldapconn,"ou=people,dc=iitb,dc=ac,dc=in","uid=$username")) == false) 
             {
-                $_SESSION['inputErrorMsg']= "Invalid LDAP/password.";                       
+                $_SESSION['inputErrorMsg']= "Invalid LDAP/password1.";                       
                 return redirect($this->redirectLogin);
             }
             if (ldap_count_entries($ldapconn, $res_id) != 1) 
             {
-                $_SESSION['inputErrorMsg']= "Invalid LDAP/password.";
+                $_SESSION['inputErrorMsg']= "Invalid LDAP/password2.";
                 return redirect($this->redirectLogin);
             }
 
@@ -109,18 +117,27 @@ class LoginController extends Controller
                 return redirect($this->redirectError);
 
             }
+
+            $info=strlen($username)>0? ( SystemUser::where("ldap",$username)->get()) : array();              
+            if(count($info)==0)
+            {
+                $_SESSION['inputErrorMsg']= "LDAP user is not allowed. Please contact Admin. ";  /*LDAP bind Failed. */
+                return redirect($this->redirectLogin);
+            }
+
+            // checking ldap password
             try
             {
                 /* Authenticating the User */
                 if (($link_id = ldap_bind($ldapconn, $user_dn, $password)) == false) 
                 {
-                    $_SESSION['inputErrorMsg']= "Invalid LDAP/password.";  /*LDAP bind Failed. */
+                    $_SESSION['inputErrorMsg']= "Invalid LDAP/Password.";  /*LDAP bind Failed. */
                     return redirect($this->redirectLogin);
                 }        
 
             }catch(\Exception $e){
                 $_SESSION['exception']=$e->getMessage();
-                $_SESSION['inputErrorMsg']= "Invalid LDAP/password.";  /*LDAP bind Failed. */
+                $_SESSION['inputErrorMsg']= "Invalid LDAP/Password.";  /*LDAP bind Failed. */
                 return redirect($this->redirectLogin);
 
             }
@@ -129,9 +146,11 @@ class LoginController extends Controller
             
             $_SESSION['errmsg']="Unable to connect LDAP server. Please Try Again Later..";
             return redirect($this->redirectError);
-        }
+        }      
         $_SESSION['loginStatus']=true;
-        $_SESSION['username']=$username;
+        $_SESSION['ldap']=$username;        
+        $_SESSION['username']=$info[0]->name;  
+        $_SESSION['level']=$info[0]->level;      
         $_SESSION['LAST_ACTIVITY'] = time(); 
         return redirect($this->redirectTo);
     }

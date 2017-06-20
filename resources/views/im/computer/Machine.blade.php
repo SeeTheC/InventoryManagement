@@ -19,18 +19,26 @@
 			      <div id="machineInfo" class="panel-collapse">
 			        		<div id="globalError" style='color:red'></div>
 							<div class="panel-body">							
-								  <div class="row col-sm-12 form-group">
-								    <label for="machine_type_id">Type of machine <span style="color: red">*</span>:</label>
-								    <select class="form-control" data-validation="required" name="machine_type_id" value=''  id="machineType">
-										 		<option value="">--Select--</option>			
-									    		@foreach($machineType as $row)	
-									    			<?php $selected= ($info==null?'':($info->machine_type_id==$row->id?'selected':'')) ?>									    			   	
-									    			<option {{$selected}} value='{{ $row->id }}'> {{ $row->machine_type }}</option>
-									    		@endforeach
-									   
-									 </select>
-								  </div>
-								  <div class="row">
+								  	<div class="row">
+								  		<div class="col-sm-6">
+										  	<div class="form-group">
+											    <label for="machine_type_id">Type of machine <span style="color: red">*</span>:</label>
+											    <select class="form-control" data-validation="required" name="machine_type_id" value=''  id="machineType">
+													 		<option value="">--Select--</option>			
+												    		@foreach($machineType as $row)	
+												    			<?php $selected= ($info==null?'':($info->machine_type_id==$row->id?'selected':'')) ?>									    			   	
+												    			<option {{$selected}} value='{{ $row->id }}'> {{ $row->machine_type }}</option>
+												    		@endforeach
+												   
+												 </select>
+											</div>						
+								  		</div>
+								  		<div class="col-sm-6">
+											<label for="cpu_id">CPU Id </span>:</label>	
+											<input type="text" id="" name="cpu_id" value="{{$info==null?'':$info->cpu_id}}" class="form-control" placeholder="" >										
+										</div>
+								  	</div>
+								  	<div class="row">
 									  <div class="col-sm-6">
 										  <div class="form-group">
 										    <label for="machineSection">Section <span style="color: red">*</span>:</label>
@@ -38,7 +46,7 @@
 														<option value="">--Select--</option>								    									    		
 											    		@foreach($section as $row){
 											    			<?php $selected= ($info==null?'':($info->section_id==$row->id?'selected':'')) ?>									    			   										    			
-											    			<option {{$selected}} value='{{$row->id}}'>{{$row->name}} </option>;									    		
+											    			<option {{$selected}} value='{{$row->id}}'>{{$row->name}} : {{$row->description}} </option>;									    		
 											    		@endforeach
 											    											   
 											  </select>	
@@ -52,7 +60,7 @@
 															<option value="">--Select--</option>								    									    		
 												    		@foreach($subsection as $row){
 												    			<?php $selected= ($info==null?'':($info->subsection_id==$row->id?'selected':'')) ?>								    		   										    
-												    			<option {{$selected}} value='{{$row->id}}'>{{$row->name}} </option>;									    		
+												    			<option {{$selected}} value='{{$row->id}}'>{{$row->name}} : {{$row->description}} </option>;									    		
 												    		@endforeach
 												    		
 												     
